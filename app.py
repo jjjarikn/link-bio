@@ -66,5 +66,6 @@ def go(target):
     return redirect(LINKS[target], code=302)
 
 
+# Local run only. Railway should use gunicorn app:app
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
