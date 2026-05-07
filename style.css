@@ -1,103 +1,125 @@
+:root {
+  --bg: #f6f7fb;
+  --card: rgba(255, 255, 255, 0.78);
+  --border: rgba(18, 23, 38, 0.08);
+  --text: #172033;
+  --muted: #667085;
+  --shadow: 0 24px 80px rgba(24, 39, 75, 0.12);
+  --tg: #2aabee;
+  --vk: #4c8bf5;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f1115;
-  color: #fff;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: max(24px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  font-family: Inter, Arial, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(76, 139, 245, 0.18), transparent 35%),
+    radial-gradient(circle at bottom, rgba(42, 171, 238, 0.12), transparent 28%),
+    var(--bg);
+  color: var(--text);
 }
 
 .card {
-  width: min(100%, 420px);
-  background: #171a21;
-  border: 1px solid #2a2f3a;
-  border-radius: 24px;
-  padding: 28px;
+  width: min(100%, 440px);
+  padding: 30px 24px 24px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 .avatar {
-  width: 112px;
-  height: 112px;
-  border-radius: 999px;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto 18px;
-  border: 3px solid rgba(255, 255, 255, 0.12);
+  margin: 0 auto 14px;
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #3b4a67;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(18, 23, 38, 0.08);
+  border-radius: 999px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
 }
 
 h1 {
-  margin: 0 0 8px;
-  font-size: 32px;
-  line-height: 1.1;
+  margin: 0 0 10px;
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 p {
   margin: 0 0 18px;
-  color: #a7afba;
-  line-height: 1.5;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 16px;
 }
 
 .notice {
-  background: #11151c;
-  border: 1px solid #2a2f3a;
-  border-radius: 16px;
-  padding: 14px 16px;
-  margin: 0 0 18px;
-  color: #d7deea;
   text-align: left;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  color: #344054;
+  line-height: 1.5;
   font-size: 14px;
-  line-height: 1.45;
+  margin-bottom: 18px;
+}
+
+.buttons {
+  display: grid;
+  gap: 12px;
 }
 
 .btn {
+  min-height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 56px;
-  border-radius: 14px;
-  text-decoration: none;
+  border-radius: 16px;
   color: #fff;
+  text-decoration: none;
   font-weight: 700;
   font-size: 16px;
-  margin-top: 12px;
-  transition: transform 0.15s ease, filter 0.15s ease;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.04);
+  transform: translateY(-2px);
+  filter: brightness(1.03);
 }
 
-.tg {
-  background: #2aabee;
-}
-
-.vk {
-  background: #4c8bf5;
-}
+.tg { background: linear-gradient(135deg, #35b7f3, var(--tg)); box-shadow: 0 14px 30px rgba(42,171,238,0.28); }
+.vk { background: linear-gradient(135deg, #5a9cff, var(--vk)); box-shadow: 0 14px 30px rgba(76,139,245,0.24); }
 
 .small {
+  margin-top: 14px;
   font-size: 12px;
-  color: #7f8897;
-  margin-top: 10px;
+  color: #7a8499;
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 16px;
-  }
-
-  .card {
-    padding: 22px 18px;
-    border-radius: 20px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
+  .card { padding: 24px 18px 20px; border-radius: 24px; }
+  .avatar { width: 108px; height: 108px; }
+  p { font-size: 15px; }
 }
